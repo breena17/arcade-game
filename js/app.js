@@ -1,11 +1,11 @@
 // Enemies our player must avoid
-/*
+
 class Enemy {
     constructor(x, y, speed) {
         // Variables applied to each of our instances go here,
         // we've provided one for you to get started
-        this.x = x;
-        this.y = y;
+        this.x = 0;
+        this.y = 0;
         this.speed = speed;
         // The image/sprite for our enemies, this uses
         // a helper we've provided to easily load images
@@ -35,7 +35,7 @@ class Enemy {
     }
 }
 
-*/
+
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -43,7 +43,7 @@ class Enemy {
 class Player {
     constructor(x,y) {
         this.x = 200;
-        this.y = 400;
+        this.y = 380;
         this.sprite = 'images/char-princess-girl.png';
     }
     
@@ -54,14 +54,14 @@ class Player {
         if(keypress == 'left' && this.x > 0) {
             this.x -= 100;
         };
-        if(keypress == 'right' && this.x < 400) {
+        if(keypress == 'right' && this.x < 380) {
             this.x += 100;
         };
         if(keypress == 'up' && this.y > 0) {
-            this.y -=100;
+            this.y -=81;
         };
-        if(keypress =='down' && this.y < 400) {
-            this.y +=100;
+        if(keypress =='down' && this.y < 380) {
+            this.y +=81;
         };
     }
 }
