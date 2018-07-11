@@ -1,6 +1,17 @@
-frontend-nanodegree-arcade-game
+Classic Arcade Game
 ===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+[Play Game](https://htmlpreview.github.io/?https://github.com/breena17/arcade-game/blob/master/index.html) 
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+Instructions
+
+How to Play
+The classic arcade game is Udacity's version of the famous arcade game Frogger. The goal of this game is to savely move your character across the road. Watch out for those pesky roaches! They'll reset your character to the beginning on your journey.
+
+Moving Your Character
+Use the UP, DOWN, LEFT, and RIGHT arrow keys to move your character across the board.
+
+Sources
+I could not have completed this game without the help of the Udacity student community. Their insight and suggestions have been a huge help in learning more about object oriented JavaScript. 
+
+Matthew Crawford's [Blog](https://matthewcranford.com/blog/) helped me initiate the game board and get past the initial console errors. His pseudo code really helped me develop a process for planning out how I want to write my code.
