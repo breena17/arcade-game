@@ -41,7 +41,7 @@ class Enemy {
 // This class requires an update(), render() and
 // a handleInput() method.
 class Player {
-    constructor() {
+    constructor(x,y) {
         this.x = 200;
         this.y = 400;
         this.sprite = 'images/char-princess-girl.png';
@@ -54,7 +54,7 @@ class Player {
         if(keypress == 'left' && this.x > 0) {
             this.x -= 100;
         };
-        if(keypress == 'right' && this.x < 505) {
+        if(keypress == 'right' && this.x < 400) {
             this.x += 100;
         };
         if(keypress == 'up' && this.y > 0) {
