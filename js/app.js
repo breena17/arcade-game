@@ -1,5 +1,8 @@
-// Enemies our player must avoid
+//score counter
+let score = 0;
+let scoreCounter = document.querySelector('.scoreTotal');
 
+// Enemies our player must avoid
 class Enemy {
     constructor(x, y, speed) {
         // Variables applied to each of our instances go here,
@@ -64,6 +67,8 @@ class Player {
         if(this.y < 0) {
             this.x = 200;
             this.y = 380;
+            score += 100;
+            scoreCounter.innerHTML = score;
         }    
     }
 }
