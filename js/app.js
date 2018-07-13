@@ -1,7 +1,9 @@
 //score counter
 let score = 0;
 let scoreCounter = document.querySelector('.scoreTotal');
-
+//live counter
+let lives = 5;
+let livesCounter = document.querySelector('.livesTotal');
 // Enemies our player must avoid
 class Enemy {
     constructor(x, y, speed) {
@@ -40,6 +42,8 @@ class Enemy {
             player.y = 380;
             score = 0;
             scoreCounter.innerHTML = score;
+            lives = lives - 1;
+            livesCounter.innerHTML = lives.toString();
         }
     };
     // Draw the enemy on the screen, required method for game
@@ -47,8 +51,31 @@ class Enemy {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 }
-
-
+//create Gem class
+class Gem {
+    constructor(x,y) {
+        this.x = x;
+        this.y = y;
+        this.sprite = 'images/gem-orange.png';
+    }
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+    update() {
+        const playerBox = {x: player.x, y: player.y, width: 50, height: 50}
+        const gemBox = {x: this.x, y: this.y, width: 70, height: 50}
+        if (playerBox.x < gemBox.x + gemBox.width &&
+            playerBox.x + playerBox.width > gemBox.x &&
+            playerBox.y < gemBox.y + gemBox.width &&
+            playerBox.height + playerBox.y > gemBox.y) {
+            //collision detected, hide gem off screen
+            gem.x = -500;
+            gem.y = -500;
+            score += 500;
+            scoreCounter.innerHTML = score;
+        }
+    }
+}
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -96,11 +123,20 @@ var allEnemies = [];
 var enemyLocation = [50,130,210];
 const player = new Player(200,380);
 var enemy;
+var gem;
+var gemLocation = [50,130,210];
 //for each loop for enemies
 enemyLocation.forEach(function(position) {
     enemy = new Enemy(-200, position, 100 + Math.floor(Math.random() * 77));
     allEnemies.push(enemy);
 })
+//instatiate gem after 3 times across board
+//y positions: 50, 130, 210
+//x positions: 0, 101, 202, 303, 404
+/*if (scoreTotal > 200) {
+    var gem = new Gem (0,0);
+}*/
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
