@@ -4,8 +4,8 @@ class Enemy {
     constructor(x, y, speed) {
         // Variables applied to each of our instances go here,
         // we've provided one for you to get started
-        this.x = 0;
-        this.y = 0;
+        this.x = x;
+        this.y = y;
         this.speed = speed;
         // The image/sprite for our enemies, this uses
         // a helper we've provided to easily load images
@@ -18,17 +18,13 @@ class Enemy {
         // which will ensure the game runs at the same speed for
         // all computers.
         this.x += this.speed * dt;
+        //reset bug when moved off screen
         if (this.x > 505) {
-            this.x = -50;
-            this.speed = 100 + Math.floor(Math.random() * 77);
-        }
-        //if enemy hasnt passed boundary
-        //move forward
-        //increase x by speed*dt
-        //else
-        //reset position
-        //randomize speed
-    }
+            this.x = -200;
+            //randomize speed
+            this.speed = 100 + Math.floor(Math.random() * 97);
+        };
+    };
     // Draw the enemy on the screen, required method for game
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -42,8 +38,8 @@ class Enemy {
 // a handleInput() method.
 class Player {
     constructor(x,y) {
-        this.x = 200;
-        this.y = 380;
+        this.x = x;
+        this.y = y;
         this.sprite = 'images/char-princess-girl.png';
     }
     
@@ -74,12 +70,17 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-//var allEnemies = [];
+var allEnemies = [];
 
 //y location creation
-//var enemyLocation = [50,100,125];
-const player = new Player();
-//var enemy;
+var enemyLocation = [50,130,210];
+const player = new Player(200,380);
+var enemy;
+
+enemyLocation.forEach(function(position) {
+    enemy = new Enemy(-200, position, 100 + Math.floor(Math.random() * 77));
+    allEnemies.push(enemy);
+})
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
