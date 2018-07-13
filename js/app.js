@@ -25,8 +25,22 @@ class Enemy {
         if (this.x > 505) {
             this.x = -200;
             //randomize speed
-            this.speed = 100 + Math.floor(Math.random() * 97);
-        };
+            this.speed = 100 + Math.floor(Math.random() * 107);
+        }
+        //check for collisions
+        //https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+        const playerBox = {x: player.x, y: player.y, width: 50, height: 50}
+        const enemiesBox = {x: this.x, y: this.y, width: 70, height: 50}
+        if (playerBox.x < enemiesBox.x + enemiesBox.width &&
+            playerBox.x + playerBox.width > enemiesBox.x &&
+            playerBox.y < enemiesBox.y + enemiesBox.width &&
+            playerBox.height + playerBox.y > enemiesBox.y) {
+            //collision detected, reset
+            player.x = 200;
+            player.y = 380;
+            score = 0;
+            scoreCounter.innerHTML = score;
+        }
     };
     // Draw the enemy on the screen, required method for game
     render() {
@@ -73,21 +87,16 @@ class Player {
     }
 }
 
-
-//Player.prototype.update = function() {
-    //}
-
-
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [];
 
-//y location creation
+//location creation
 var enemyLocation = [50,130,210];
 const player = new Player(200,380);
 var enemy;
-
+//for each loop for enemies
 enemyLocation.forEach(function(position) {
     enemy = new Enemy(-200, position, 100 + Math.floor(Math.random() * 77));
     allEnemies.push(enemy);
