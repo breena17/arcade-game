@@ -60,6 +60,12 @@ class Player {
             this.y +=81;
         };
     }
+    update() {
+        if(this.y < 0) {
+            this.x = 200;
+            this.y = 380;
+        }    
+    }
 }
 
 
