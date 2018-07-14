@@ -4,6 +4,10 @@ let scoreCounter = document.querySelector('.scoreTotal');
 //live counter
 let lives = 5;
 let livesCounter = document.querySelector('.livesTotal');
+
+if (lives === 0) {
+    reset();
+}
 // Enemies our player must avoid
 class Enemy {
     constructor(x, y, speed) {
@@ -40,8 +44,8 @@ class Enemy {
             //collision detected, reset
             player.x = 200;
             player.y = 380;
-            score = 0;
-            scoreCounter.innerHTML = score;
+            //score = 0;
+            //scoreCounter.innerHTML = score;
             lives = lives - 1;
             livesCounter.innerHTML = lives.toString();
         }
@@ -73,7 +77,14 @@ class Gem {
             gem.y = -500;
             score += 500;
             scoreCounter.innerHTML = score;
-        }
+            setTimeout(function() {
+                gem.reset();
+            }, 5000);
+        }    
+    }
+    reset() {
+        this.x = (101 * Math.floor(Math.random() * 5) + 0);
+        this.y = (50 + (85 * Math.floor(Math.random() * 3) + 0));
     }
 }
 
@@ -110,7 +121,8 @@ class Player {
             this.y = 380;
             score += 100;
             scoreCounter.innerHTML = score;
-        }    
+        } 
+           
     }
 }
 
@@ -123,8 +135,8 @@ var allEnemies = [];
 var enemyLocation = [50,130,210];
 const player = new Player(200,380);
 var enemy;
-var gem;
-var gemLocation = [50,130,210];
+//var gem;
+//var gemLocation = [50,130,210];
 //for each loop for enemies
 enemyLocation.forEach(function(position) {
     enemy = new Enemy(-200, position, 100 + Math.floor(Math.random() * 77));
@@ -133,9 +145,9 @@ enemyLocation.forEach(function(position) {
 //instatiate gem after 3 times across board
 //y positions: 50, 130, 210
 //x positions: 0, 101, 202, 303, 404
-/*if (scoreTotal > 200) {
-    var gem = new Gem (0,0);
-}*/
+var gem = new Gem (101 * Math.floor(Math.random() * 5) + 0, 50 +
+(85 * Math.floor(Math.random() * 3) + 0));
+
 
 
 // This listens for key presses and sends the keys to your
