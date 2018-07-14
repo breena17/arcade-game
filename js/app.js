@@ -1,13 +1,7 @@
-//score counter
-let score = 0;
-let scoreCounter = document.querySelector('.scoreTotal');
-//live counter
-let lives = 5;
-let livesCounter = document.querySelector('.livesTotal');
-
-if (lives === 0) {
-    reset();
-}
+/*if (lives === 0) {
+    enemy.x = -200;
+    enemy.y = -200;
+}*/
 // Enemies our player must avoid
 class Enemy {
     constructor(x, y, speed) {
@@ -31,7 +25,7 @@ class Enemy {
         if (this.x > 505) {
             this.x = -200;
             //randomize speed
-            this.speed = 100 + Math.floor(Math.random() * 107);
+            this.speed = 100 + Math.floor(Math.random() * 217);
         }
         //check for collisions
         //https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
@@ -46,8 +40,9 @@ class Enemy {
             player.y = 380;
             //score = 0;
             //scoreCounter.innerHTML = score;
-            lives = lives - 1;
-            livesCounter.innerHTML = lives.toString();
+            player.lives = player.lives - 1;
+            let livesCounter = document.querySelector('.livesTotal');
+            livesCounter.innerHTML = player.lives.toString();
         }
     };
     // Draw the enemy on the screen, required method for game
@@ -75,8 +70,9 @@ class Gem {
             //collision detected, hide gem off screen
             gem.x = -500;
             gem.y = -500;
-            score += 500;
-            scoreCounter.innerHTML = score;
+            player.score += 500;
+            let scoreCounter = document.querySelector('.scoreTotal');
+            scoreCounter.innerHTML = player.score;
             setTimeout(function() {
                 gem.reset();
             }, 5000);
@@ -96,6 +92,8 @@ class Player {
         this.x = x;
         this.y = y;
         this.sprite = 'images/char-princess-girl.png';
+        this.score = 0;
+        this.lives = 5;
     }
     
     render() {
@@ -119,8 +117,9 @@ class Player {
         if(this.y < 0) {
             this.x = 200;
             this.y = 380;
-            score += 100;
-            scoreCounter.innerHTML = score;
+            this.score += 100;
+            let scoreCounter = document.querySelector('.scoreTotal');
+            scoreCounter.innerHTML = this.score;
         } 
            
     }
