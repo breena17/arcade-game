@@ -121,9 +121,9 @@ class Player {
             let scoreCounter = document.querySelector('.scoreTotal');
             scoreCounter.innerHTML = this.score;
         }
-        /*if(this.lives ===0) {
-            reset();
-        } */
+        if(this.lives ===0) {
+            //reset();
+        } 
            
     }
 }
@@ -164,3 +164,15 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+/*
+var characterMoves = function(e) {
+    var allowedKeys = {
+        37: 'left',
+        38: 'up',
+        39: 'right',
+        40: 'down'
+    };
+    player.handleInput(allowedKeys[e.keyCode]);
+};
+document.addEventListener('keyup', characterMoves);
+*/
