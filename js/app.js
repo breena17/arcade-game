@@ -120,7 +120,10 @@ class Player {
             this.score += 100;
             let scoreCounter = document.querySelector('.scoreTotal');
             scoreCounter.innerHTML = this.score;
-        } 
+        }
+        /*if(this.lives ===0) {
+            reset();
+        } */
            
     }
 }

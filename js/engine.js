@@ -63,7 +63,7 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
-        reset();
+        //reset();
         lastTime = Date.now();
         main();
     }
@@ -80,6 +80,10 @@ var Engine = (function(global) {
     function update(dt) {
         updateEntities(dt);
         // checkCollisions();
+        if(player.lives ===0) {
+            //document.removeEventListener('keyup', input);
+            reset();
+        }
     }
 
     /* This is called by the update function and loops through all of the
@@ -140,6 +144,39 @@ var Engine = (function(global) {
         }
 
         renderEntities();
+        if(player.lives ===0) {
+            var rowImages = [
+                'images/water-block.png',   // Top row is water
+                'images/stone-block.png',   // Row 1 of 3 of stone
+                'images/stone-block.png',   // Row 2 of 3 of stone
+                'images/stone-block.png',   // Row 3 of 3 of stone
+                'images/grass-block.png',   // Row 1 of 2 of grass
+                'images/grass-block.png'    // Row 2 of 2 of grass
+            ],
+            numRows = 6,
+            numCols = 5,
+            row, col;
+        
+        ctx.clearRect(0,0,canvas.width,canvas.height)
+
+        for (row = 0; row < numRows; row++) {
+            for (col = 0; col < numCols; col++) {
+                ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
+                ctx.fillStyle = "white";
+                ctx.font = "72px Arial";
+                ctx.textAlign = "center";
+                ctx.fillText("GAME OVER", canvas.width/2, canvas.height/2.15);
+                ctx.fillStyle = "gold";
+                ctx.strokeStyle = "grey";
+                ctx.strokeText("GAME OVER", canvas.width/2, canvas.height/2.15);
+                ctx.lineWidth = .5;
+                ctx.font = "30px Arial";
+                ctx.textAlign = "center";
+                ctx.fillText("Press ENTER To Play Again", canvas.width/2, canvas.height/1.85);
+                ctx.strokeText("Press ENTER To Play Again", canvas.width/2, canvas.height/1.85);
+            }
+        }
+        }
     }
 
     /* This function is called by the render function and is called on each game
@@ -163,7 +200,7 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        
+        render();
     }
 
     /* Go ahead and load all of the images we know we're going to need to
