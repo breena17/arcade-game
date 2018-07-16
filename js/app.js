@@ -92,6 +92,8 @@ class Player {
         this.x = x;
         this.y = y;
         this.sprite = 'images/char-princess-girl.png';
+        //https://discussions.udacity.com/t/need-help-refactoring/32466
+        //removed score and lives from global space
         this.score = 0;
         this.lives = 5;
     }
@@ -112,6 +114,8 @@ class Player {
         if(keypress =='down' && this.y < 380) {
             this.y +=81;
         };
+        //FEND office hours help
+        //https://gwgnanodegrees.slack.com/messages/CAPE2FVAS/convo/CAPE2FVAS-1531764662.000335/
         if(keypress == 'enter') {
             location.reload();
         }
