@@ -224,7 +224,8 @@ var Engine = (function(global) {
         row, col;
     
     ctx.clearRect(0,0,canvas.width,canvas.height)
-
+//https://stackoverflow.com/questions/13627111/drawing-text-with-an-outer-stroke-with-html5s-canvas
+//drawing text with html5 canvas
     for (row = 0; row < numRows; row++) {
         for (col = 0; col < numCols; col++) {
             ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
