@@ -112,6 +112,9 @@ class Player {
         if(keypress =='down' && this.y < 380) {
             this.y +=81;
         };
+        if(keypress == 'enter') {
+            location.reload();
+        }
     }
     update() {
         if(this.y < 0) {
@@ -159,7 +162,8 @@ document.addEventListener('keyup', function(e) {
         37: 'left',
         38: 'up',
         39: 'right',
-        40: 'down'
+        40: 'down',
+        13: 'enter'
     };
 
     player.handleInput(allowedKeys[e.keyCode]);

@@ -86,9 +86,10 @@ var Engine = (function(global) {
             document.addEventListener('keypress', function (e) {
                 var key = e.which || e.keyCode;
                 if (key === 13) {
-                    document.addEventListener('keyup', characterMoves);
-                    updateEntities(dt);
-                    ctx.clearRect(0,0,canvas.width,canvas.height)
+                    //document.addEventListener('keyup', characterMoves);
+                    //updateEntities(dt);
+                    //ctx.clearRect(0,0,canvas.width,canvas.height)
+                    location.reload();
                 }
             });
             
@@ -241,7 +242,7 @@ var Engine = (function(global) {
             ctx.strokeText("Press ENTER To Play Again", canvas.width/2, canvas.height/1.85);
         }
     }
-    //document.removeEventListener('keyup', characterMoves);
+    /*document.removeEventListener('keyup', characterMoves);
     document.addEventListener('keypress', function (e) {
         var key = e.which || e.keyCode;
         if (key === 13) {
@@ -250,8 +251,9 @@ var Engine = (function(global) {
                 //renderEntities();
                 //ctx.clearRect(0,0,canvas.width,canvas.height)
                 //render();
+                location.reload();
             }
-    });
+    });*/
 }
     
 
