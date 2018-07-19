@@ -1,7 +1,7 @@
 Classic Arcade Game
 ===============================
 
-[![Game Preview](tree/master/images/arcade-game-screenshot.png)]
+To run the game, please open the index.html file in your browser, or simply click the link below.
 
 [Play Game](https://htmlpreview.github.io/?https://github.com/breena17/arcade-game/blob/master/index.html) 
 
