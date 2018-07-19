@@ -1,7 +1,7 @@
 Classic Arcade Game
 ===============================
 
-[![Game Preview](i.imgur.com/6FEv26s.png)]
+[![Game Preview](arcade-game-screenshot.png)]
 
 [Play Game](https://htmlpreview.github.io/?https://github.com/breena17/arcade-game/blob/master/index.html) 
 
